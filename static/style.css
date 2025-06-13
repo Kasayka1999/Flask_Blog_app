@@ -25,3 +25,21 @@ h1 {
 .post p {
     margin: 10px 0;
 }
+.new_post_button {
+    padding: 20px;
+}
+button.add_post {
+    background: #6163ff;
+    border: 1px solid #dab1ff;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 7px 20px;
+    color: #fff;
+    cursor: pointer;
+    webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+button.add_post:hover {
+    background: #8182ff;
+    box-shadow: 0 2px 4px 0 rgb(130 192 251 / 20%), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+}
