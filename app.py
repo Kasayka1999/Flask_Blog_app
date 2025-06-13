@@ -18,7 +18,12 @@ def load_data(path):
         data = json.loads(content)
         return data
 
-def save_post(author, title, content):
+def save_data(new_data):
+
+    with open(data_path, "w") as filedata:
+        json.dump(new_data, filedata, indent=4 )
+
+def add_post(author, title, content):
     existing_posts = load_data(data_path)
 
     user_ids = {post["id"] for post in existing_posts}
@@ -33,9 +38,16 @@ def save_post(author, title, content):
                  "content": content
     }
     existing_posts.append(new_posts)
+    save_data(existing_posts)
 
-    with open(data_path, "w") as new_posts_data:
-        json.dump(existing_posts, new_posts_data, indent=4 )
+def delete_post(post_id):
+    existing_posts = load_data(data_path)
+
+    for post_index, post in enumerate(existing_posts):
+        if post_id == post["id"]:
+            existing_posts.pop(post_index)
+
+    save_data(existing_posts)
 
 @app.route('/')
 def index():
@@ -50,10 +62,19 @@ def add():
         author = request.form.get('author', 'NoAuthor')
         title = request.form.get('title', 'NoTitle')
         content = request.form.get('content', 'NoContent')
-        save_post(author, title, content)
+        add_post(author, title, content)
         return redirect(url_for('index'))
 
     return render_template('add.html')
+
+@app.route('/delete/<int:post_id>', methods=['POST'])
+def delete(post_id):
+    # Find the blog post with the given id and remove it from the list
+    if request.method == 'POST':
+        delete_post(post_id)
+        return redirect(url_for('index'))
+    # Redirect back to the home page
+    return render_template('index.html', post_id=post_id)
 
 if __name__ == '__main__':
     app.run(host="127.0.0.1", port=5001, debug=True)

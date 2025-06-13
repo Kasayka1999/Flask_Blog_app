@@ -16,6 +16,7 @@ h1 {
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 8px;
+    position: relative;
 }
 
 .post h2 {
@@ -42,4 +43,24 @@ button.add_post {
 button.add_post:hover {
     background: #8182ff;
     box-shadow: 0 2px 4px 0 rgb(130 192 251 / 20%), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+.post_container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.remove_post {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    color: #888;
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.remove_post:hover {
+    color: #ff3b3b;
 }
