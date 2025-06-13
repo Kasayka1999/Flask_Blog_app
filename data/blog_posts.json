@@ -1,14 +1,26 @@
 [
     {
-      "id": 1,
-      "author": "John Doe",
-      "title": "First Post",
-      "content": "This is my first post."
+        "id": 1,
+        "author": "John Doe",
+        "title": "First Post",
+        "content": "This is my first post."
     },
     {
-      "id": 1,
-      "author": "Jane Doe",
-      "title": "Second Post",
-      "content": "This is another post."
+        "id": 2,
+        "author": "Jane Doe",
+        "title": "Second Post",
+        "content": "This is another post."
+    },
+    {
+        "id": 0,
+        "author": "Giouxel",
+        "title": "My Flask Blog",
+        "content": "Test add post form"
+    },
+    {
+        "id": 3,
+        "author": "Giouxel",
+        "title": "Test uniqueID",
+        "content": "Test if id is unique or duplicated."
     }
 ]
