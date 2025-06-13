@@ -10,5 +10,11 @@
         "author": "Tester",
         "title": "Test Unique USERID",
         "content": "Testing unique user id duplicated or not."
+    },
+    {
+        "id": 2,
+        "author": "Tester_Update",
+        "title": "Testing Updating Blog Post",
+        "content": "Testing to update the blog post and if works correct."
     }
 ]

@@ -24,7 +24,12 @@
         <h2>{{ post["title"] }}</h2>
         <p><em>Written by {{ post["author"] }}</em></p>
         <p>{{ post["content"] }}</p>
-    </div>
+        <div class="update_post">
+            <form action="{{ url_for('update', post_id=post['id']) }}" method="get">
+                <button class="update-post">Update Post</button>
+            </form>
+        </div>
+        </div>
     {% endfor %}
     </div>
 </body>

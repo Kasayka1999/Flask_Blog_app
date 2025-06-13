@@ -49,6 +49,24 @@ def delete_post(post_id):
 
     save_data(existing_posts)
 
+def fetch_post_by_id(post_id):
+    existing_data = load_data(data_path)
+    for index_post, post in enumerate(existing_data):
+        if post["id"] == post_id:
+            return existing_data[index_post]
+
+
+def update_post(post_id, author, title, content):
+    existing_posts = load_data(data_path)
+
+    for post_index, post in enumerate(existing_posts):
+        if post_id == post["id"]:
+            post["author"] = author
+            post["title"] = title
+            post["content"] = content
+
+    save_data(existing_posts)
+
 @app.route('/')
 def index():
     blog_posts = load_data(data_path)
@@ -75,6 +93,22 @@ def delete(post_id):
         return redirect(url_for('index'))
     # Redirect back to the home page
     return render_template('index.html', post_id=post_id)
+
+@app.route('/update/<int:post_id>', methods=['GET', 'POST'])
+def update(post_id):
+    # Fetch the blog posts from the JSON file
+    post = fetch_post_by_id(post_id)
+    if post is None:
+        # Post not found
+        return "Post not found", 404
+
+    if request.method == 'POST':
+        author = request.form.get('author', 'NoAuthor')
+        title = request.form.get('title', 'NoTitle')
+        content = request.form.get('content', 'NoContent')
+        update_post(post_id, author, title, content)
+        return redirect(url_for('index'))
+    return render_template('update.html', post=post)
 
 if __name__ == '__main__':
     app.run(host="127.0.0.1", port=5001, debug=True)

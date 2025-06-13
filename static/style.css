@@ -64,3 +64,19 @@ button.add_post:hover {
 .remove_post:hover {
     color: #ff3b3b;
 }
+button.update-post {
+    background: #61ffdf;
+    border: 1px solid #47cc9e;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 7px 20px;
+    color: #414141;
+    cursor: pointer;
+    webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+button.update-post:hover {
+    background: #5cb7a5;
+    box-shadow: 0 2px 4px 0 rgb(130 251 141 / 20%), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+}
